@@ -3,107 +3,468 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Faith Mshiki | Builder in Progress</title>
+    <title>Faith Mshiki | Developer & AI Learner</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --bg:       #09090f;
+            --surface:  #111120;
+            --border:   #1e1e38;
+            --purple:   #7c3aed;
+            --purple-light: #a78bfa;
+            --purple-glow: rgba(124, 58, 237, 0.18);
+            --blue:     #60a5fa;
+            --text:     #e2e2f0;
+            --muted:    #8888aa;
+            --tag-bg:   #1a1a30;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            max-width: 750px;
-            margin: 60px auto;
-            padding: 0 20px;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
             line-height: 1.7;
-            background-color: #0f0f0f;
-            color: #eaeaea;
+            padding: 0 20px 80px;
         }
+
+        /* ── Header ── */
+        header {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 64px 0 48px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .eyebrow {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--purple-light);
+            margin-bottom: 16px;
+        }
+
         h1 {
-            border-bottom: 2px solid #7c3aed;
-            padding-bottom: 10px;
-            letter-spacing: 1px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2rem, 5vw, 2.8rem);
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            line-height: 1.15;
+            color: #fff;
+            margin-bottom: 16px;
         }
+
+        h1 span {
+            background: linear-gradient(135deg, #7c3aed, #a78bfa, #60a5fa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .tagline {
+            color: var(--muted);
+            font-size: 1rem;
+            font-weight: 400;
+            margin-bottom: 24px;
+        }
+
+        .status-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--tag-bg);
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            padding: 6px 14px;
+            font-size: 13px;
+            color: var(--purple-light);
+        }
+
+        .status-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #22c55e;
+            box-shadow: 0 0 6px #22c55e;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+
+        /* ── Main layout ── */
+        main {
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        section {
+            padding: 44px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        section:last-child {
+            border-bottom: none;
+        }
+
         h2 {
-            color: #7c3aed;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--purple-light);
+            margin-bottom: 20px;
         }
-        a {
-            color: #60a5fa;
+
+        p {
+            color: var(--text);
+            font-size: 0.975rem;
+            margin-bottom: 14px;
+        }
+
+        p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* ── Learning tags ── */
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 4px;
+        }
+
+        .tag {
+            background: var(--tag-bg);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 6px 14px;
+            font-size: 13px;
+            color: var(--text);
+            transition: border-color 0.2s, color 0.2s;
+        }
+
+        .tag:hover {
+            border-color: var(--purple);
+            color: var(--purple-light);
+        }
+
+        .tag.active {
+            border-color: var(--purple);
+            background: var(--purple-glow);
+            color: var(--purple-light);
+        }
+
+        /* ── Project cards ── */
+        .projects-grid {
+            display: grid;
+            gap: 16px;
+        }
+
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 22px 24px;
+            transition: border-color 0.25s, box-shadow 0.25s;
+        }
+
+        .card:hover {
+            border-color: var(--purple);
+            box-shadow: 0 0 24px var(--purple-glow);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+
+        .card-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .badge {
+            font-size: 11px;
+            padding: 3px 10px;
+            border-radius: 100px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        .badge-wip {
+            background: rgba(251, 191, 36, 0.12);
+            color: #fbbf24;
+            border: 1px solid rgba(251, 191, 36, 0.25);
+        }
+
+        .card p {
+            font-size: 0.88rem;
+            color: var(--muted);
+            margin-bottom: 12px;
+        }
+
+        .card-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .stack-item {
+            font-size: 11px;
+            color: var(--blue);
+            background: rgba(96, 165, 250, 0.08);
+            border: 1px solid rgba(96, 165, 250, 0.2);
+            border-radius: 4px;
+            padding: 2px 8px;
+        }
+
+        /* ── Goals list ── */
+        .goals-list {
+            list-style: none;
+            display: grid;
+            gap: 12px;
+        }
+
+        .goals-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 0.95rem;
+            color: var(--text);
+        }
+
+        .goals-list li::before {
+            content: "→";
+            color: var(--purple-light);
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        /* ── Philosophy ── */
+        blockquote {
+            border-left: 3px solid var(--purple);
+            padding-left: 20px;
+            margin: 0;
+            font-size: 1.05rem;
+            color: var(--muted);
+            font-style: italic;
+            line-height: 1.8;
+        }
+
+        /* ── Connect ── */
+        .links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .link-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 10px 18px;
+            font-size: 14px;
+            color: var(--text);
+            text-decoration: none;
+            transition: border-color 0.2s, color 0.2s, box-shadow 0.2s;
+        }
+
+        .link-btn:hover {
+            border-color: var(--purple-light);
+            color: var(--purple-light);
+            box-shadow: 0 0 14px var(--purple-glow);
             text-decoration: none;
         }
-        a:hover {
-            text-decoration: underline;
+
+        /* ── Footer ── */
+        footer {
+            max-width: 720px;
+            margin: 48px auto 0;
+            font-size: 12px;
+            color: var(--muted);
+            text-align: center;
         }
-        .section {
-            margin-bottom: 40px;
-        }
-        .highlight {
-            color: #60a5fa;
-            font-weight: bold;
+
+        @media (max-width: 480px) {
+            header { padding: 40px 0 32px; }
+            .card-header { flex-direction: column; align-items: flex-start; gap: 8px; }
         }
     </style>
 </head>
 <body>
 
-    <h1>👋 Hi, I'm Faith Mshiki</h1>
-<p><em>Developer • AI & Machine Learning Learner • Systems Thinker</em></p>
+<header>
+    <p class="eyebrow">Based in Nairobi, Kenya</p>
+    <h1>Faith <span>Mshiki</span></h1>
+    <p class="tagline">Developer · AI & Machine Learning Learner · Systems Thinker</p>
+    <div class="status-pill">
+        <span class="status-dot"></span>
+        Currently: studying AI & Neural Networks
+    </div>
+</header>
 
-<div class="section">
-    <h2>🌿 About Me</h2>
+<main>
 
-    <p>
-        I am a Supply Chain Management student with a growing passion for
-        technology, software development, artificial intelligence, and economics.
-    </p>
+    <!-- About -->
+    <section>
+        <h2>About</h2>
+        <p>
+            I'm a Supply Chain & Procurement Management student who fell deep into the world of software and never looked back.
+            I build full-stack web apps, study artificial intelligence, and think a lot about how technology can solve real problems — not just create shiny ones.
+        </p>
+        <p>
+            My background is a little unusual: logistics and systems thinking from supply chain, paired with hands-on coding from web development.
+            That combination drives how I approach every project — I care about how things actually work, not just how they look.
+        </p>
+    </section>
 
-    <p>
-        My goal is to understand how systems work, how technology scales,
-        and how intelligent solutions can solve real-world problems.
-    </p>
-</div>
+    <!-- Learning -->
+    <section>
+        <h2>What I'm Learning</h2>
+        <div class="tags">
+            <span class="tag active">Artificial Intelligence</span>
+            <span class="tag active">Neural Networks</span>
+            <span class="tag active">Machine Learning</span>
+            <span class="tag">JavaScript & React</span>
+            <span class="tag">Node.js & Backend</span>
+            <span class="tag">React Native & Expo</span>
+            <span class="tag">Git & GitHub</span>
+            <span class="tag">TypeScript</span>
+            <span class="tag">Firebase & Supabase</span>
+        </div>
+    </section>
 
-<div class="section">
-    <h2>📚 What I'm Learning</h2>
+    <!-- Projects -->
+    <section>
+        <h2>Projects</h2>
+        <div class="projects-grid">
 
-    <ul>
-        <li>Artificial Intelligence (AI)</li>
-        <li>Machine Learning Fundamentals</li>
-        <li>JavaScript & Full-Stack Development</li>
-        <li>Git & GitHub</li>
-        <li>Problem Solving & Software Design</li>
-    </ul>
-</div>
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">ClipScout</span>
+                    <span class="badge badge-wip">In Progress</span>
+                </div>
+                <p>A movie clip discovery platform with a TikTok-style feed, AI-powered movie identification, and official trailer browsing.</p>
+                <div class="card-stack">
+                    <span class="stack-item">React Native</span>
+                    <span class="stack-item">Expo</span>
+                    <span class="stack-item">TypeScript</span>
+                    <span class="stack-item">Firebase</span>
+                    <span class="stack-item">Supabase</span>
+                    <span class="stack-item">Gemini AI</span>
+                </div>
+            </div>
 
-<div class="section">
-    <h2>🚀 Current Projects</h2>
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">Roam</span>
+                    <span class="badge badge-wip">In Progress</span>
+                </div>
+                <p>An East African adventure community platform connecting travellers with verified local operators — think Airbnb Experiences for the region.</p>
+                <div class="card-stack">
+                    <span class="stack-item">React</span>
+                    <span class="stack-item">Node.js</span>
+                    <span class="stack-item">Escrow Payments</span>
+                    <span class="stack-item">Operator Marketplace</span>
+                </div>
+            </div>
 
-    <ul>
-        <li><strong>ClipScout</strong> — A movie discovery platform built around short video clips.</li>
-        <li><strong>AI Concepts Repository</strong> — A collaborative guide covering machine learning, neural networks, and AI fundamentals.</li>
-    </ul>
-</div>
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">Sage</span>
+                    <span class="badge badge-wip">In Progress</span>
+                </div>
+                <p>A contextual AI reading overlay with emotional intelligence mode, supporting English, Kiswahili, French, and Spanish.</p>
+                <div class="card-stack">
+                    <span class="stack-item">AI Overlay</span>
+                    <span class="stack-item">Multilingual</span>
+                    <span class="stack-item">NLP</span>
+                </div>
+            </div>
 
-<div class="section">
-    <h2>🎯 Current Goals</h2>
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">Ngoja</span>
+                    <span class="badge badge-wip">In Progress</span>
+                </div>
+                <p>An Android anti-theft app built for Nairobi — silent photo capture, GPS logging, and a decoy lock screen that works offline.</p>
+                <div class="card-stack">
+                    <span class="stack-item">Kotlin</span>
+                    <span class="stack-item">Node.js</span>
+                    <span class="stack-item">MongoDB</span>
+                    <span class="stack-item">Firebase FCM</span>
+                </div>
+            </div>
 
-    <ul>
-        <li>Build intelligent software powered by AI</li>
-        <li>Strengthen my full-stack development skills</li>
-        <li>Learn machine learning and data analysis</li>
-        <li>Combine technology, economics, and innovation</li>
-    </ul>
-</div>
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">AI Concepts Repository</span>
+                    <span class="badge badge-wip">In Progress</span>
+                </div>
+                <p>A collaborative team guide covering machine learning, neural networks, and AI fundamentals — my contribution focuses on neural network architecture and diagrams.</p>
+                <div class="card-stack">
+                    <span class="stack-item">Neural Networks</span>
+                    <span class="stack-item">ML Foundations</span>
+                    <span class="stack-item">GitHub Collaboration</span>
+                </div>
+            </div>
 
-<div class="section">
-    <h2>💭 Personal Philosophy</h2>
+        </div>
+    </section>
 
-    <p>
-        <em>"Building knowledge today to create better systems tomorrow."</em>
-    </p>
-</div>
+    <!-- Goals -->
+    <section>
+        <h2>Current Goals</h2>
+        <ul class="goals-list">
+            <li>Go deeper into machine learning and understand how models actually learn</li>
+            <li>Build AI-powered software that solves real problems in real contexts</li>
+            <li>Strengthen full-stack development across mobile and web</li>
+            <li>Connect technology, economics, and innovation in meaningful ways</li>
+        </ul>
+    </section>
 
-<div class="section">
-    <h2>🔗 Connect</h2>
+    <!-- Philosophy -->
+    <section>
+        <h2>Philosophy</h2>
+        <blockquote>
+            "Building knowledge today to create better systems tomorrow."
+        </blockquote>
+    </section>
 
-    <ul>
-        <li><a href="https://github.com/Mshi-dev15">GitHub Profile</a></li>
-    </ul>
-</div>
+    <!-- Connect -->
+    <section>
+        <h2>Connect</h2>
+        <div class="links">
+            <a class="link-btn" href="https://github.com/Mshi-dev15" target="_blank" rel="noopener">
+                ⌥ GitHub
+            </a>
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    <p>Faith Mshiki · Nairobi, Kenya · 2025</p>
+</footer>
+
 </body>
 </html>
 
